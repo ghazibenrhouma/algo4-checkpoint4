@@ -1,0 +1,45 @@
+PROCEDURE insertion(VAR tab : ARRAY_OF INTEGER , m,y : INTEGER )
+VAR
+    j,k, i, z :INTEGER :=0;
+    b: BOOLEAN :=false;
+    tab2 : ARRAY_OF INTEGER ;
+BEGIN
+    REPEAT
+      IF (y<=tab[j]) THEN
+      FOR z FROM j TO m-1 DO
+         tab2[k]:= tab[z];
+         k:=k+1 :
+      END_FOR
+      tab[j]:=y ;
+      j:=j+1 ;
+      FOR i FROM 0 TO tab2.length-1 DO
+          tab[j]:= tab2[i] ;
+          j:=j+1;
+      END_FOR
+      b := true ;
+       ELSE
+         j :=j +1 ;
+      END_IF
+  UNTIL (b=true or j>m)
+  IF (b=false) THEN
+   tab[j]:=y ;
+END
+
+ALGORITHM Insertion sort
+VAR
+    tab : ARRAY_OF INTEGER;
+    n:INTEGER;
+    i,j:INTEGER :=0;
+    x,elem : INTEGER ;
+BEGIN
+    read(n);
+    read(x);
+    tab[0]:=x ;
+    FOR i FROM 1 TO n-1 DO
+        read(elem);
+        insertion(tab,i, elem)
+    END_FOR
+ FOR j FROM 0 TO n-1 DO
+     write(tab[j]) ;
+ END_FOR
+END
